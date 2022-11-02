@@ -1,0 +1,7 @@
+.carousel-item{
+    height:45rem;
+    background-color: #000;
+}
+.carousel-item img{
+    opacity: 0.6;
+}
