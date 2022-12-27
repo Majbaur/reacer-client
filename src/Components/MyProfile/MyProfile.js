@@ -1,45 +1,74 @@
 import React from 'react';
-import { useForm } from "react-hook-form";
-//majba
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './../../firebase.init.js';
-
+import Stat from '../Stat/Stat.js';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axiosPrivate from '../api/axiosPrivate';
+import { signOut } from 'firebase/auth';
 const MyProfile = () => {
-    const { register, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
-    if(user){
-        console.log(user)
-    }
-        const onSubmit = data => {
+        const [users, setUsers] = useState([]);
+        const navigate = useNavigate();
+        useEffect( () => {
             
-        console.log(data);
-        const url = `http://localhost:5000/addedItem`;
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(res=>res.json())
-        .then(result =>{
-            console.log(result)
-        })
-    };
-    console.log('user',user.displayName);
+            const getmyGames = async() =>{
+                const email = user?.email;
+                const url = `http://localhost:5000/userRegistion?email=${email}`;
+                try{
+                    const {data} = await axiosPrivate.get(url);
+                    setUsers(data);
+                }
+                catch(error){
+                    console.log(error.message);
+                    if(error.response.status === 401 || error.response.status === 403){
+                        signOut(auth);
+                        navigate('/login')
+                    }
+                }
+            }
+            getmyGames();
+    
+        }, [user])
+    let demo=[
+        {
+            "displayName" :"21-03-21",
+            "Time":10
+        },
+        {
+            "displayName" :"22-03-21",
+            "Time":20
+        },
+        {
+            "displayName" :"23-03-21",
+            "Time":50
+        },
+        {
+            "displayName" :"24-03-21",
+            "Time":5
+        }, 
+        {
+            "displayName" :"30-03-21",
+            "Time":30
+        },
+    ]
     return (
-        <div className='w-50 mx-auto'>
+        <div className=''>
             <h2>Profile</h2>
 
-            <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
-                <img className='w-25 mx-auto pb-2' src={user?.photoURL} alt="" />
-                <h2 className='w-100 mb-2'>{user?.displayName}</h2>
-                <h2 className='w-100 mb-2'>{user?.email}</h2>
-                <h2 className='w-100 mb-2'>Point: 500</h2>
-                <h2 className='w-100 mb-2'>Badge: Frist Reacer</h2>
-            </form>
+            
+                {
+                    users.map(user=> <div><h3>Name:{user.displayName} </h3> 
+                                            <h3>Email: {user.email}</h3>
+                                            <h3> Point: {user.point}</h3>
+                                            <h3> Level: {user.badge}</h3>
+                                            </div>)
+                }
+            
+            <Stat users={demo}></Stat>
         </div>
     );
 };
 
 export default MyProfile;
+

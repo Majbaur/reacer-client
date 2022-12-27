@@ -37,7 +37,7 @@ const WomanLongRace = () => {
             <div className='w-75 mx-auto'>
                 {
                     orders.map(order => <div className='row row-cols-3'>
-                        <div> <p> {order.email} : {order.addedItem}</p></div>
+                        <div> <h3> {order.displayName}</h3></div>
                         <div><StopWatch></StopWatch></div>
                         <div><WomanLongRaceForm
                             key={order._id}

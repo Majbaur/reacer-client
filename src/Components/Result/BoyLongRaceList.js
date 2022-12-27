@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Stat from './../Stat/Stat';
 
 const BoyLongRaceList = () => {
     const [users,setUsers]=useState([])
@@ -9,12 +10,27 @@ const BoyLongRaceList = () => {
     },[])
     return (
         <div>
-            <h2>Avilable user in this game:{users.length}</h2>
-            <ul>
-                {
-                    users.map(user=> <li>Name:{user.displayName}  Email: {user.email}  Time: {user.Time}  ::  {user.addedItem}</li>)
+            <h1>Avilable Racers in Boy Long Race:{users.length}</h1>
+
+            <table className="table table-striped table-info my-5 w-50 mx-auto">
+                <thead className="">
+                    <tr>
+                        <td><h3>Pos.</h3></td>
+                        <td><h3>Name</h3></td>
+                        <td><h3>Time</h3></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {
+                    users.map((user,id)=> <tr>
+                    <td>{id+1}</td>
+                      <td>{user.displayName}</td> 
+                      <td>{user.Time} </td> 
+              </tr>)
                 }
-            </ul>
+                    </tbody>
+                </table>
+            <Stat users={users}></Stat>
         </div>
     );
 };

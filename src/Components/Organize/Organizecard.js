@@ -21,7 +21,7 @@ const Organizecard = ({addItem}) => {
                      <p><span className="fw-bold">Location: </span> {location}</p>
                      <p> <span className="fw-bold">Description: </span> {description}</p>
                      <p><span className="fw-bold">Date: </span> {eventDetails}</p>
-            <button onClick={() => navigateToAddedItemDetail(_id)} className='btn btn-primary'>Game Participant List: {gameName}</button>
+            <button onClick={() => navigateToAddedItemDetail(_id)} className='btn btn-primary'>Start Event</button>
             
         </div>
         </div>

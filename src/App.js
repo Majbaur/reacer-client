@@ -30,9 +30,11 @@ import BoyShortRaceList from './Components/Result/BoyShortRaceList';
 import LapWiseRaceList from './Components/Result/LapWiseRaceList';
 import WomanLongRaceList from './Components/Result/WomanLongRaceList';
 import WomanShortRaceList from './Components/Result/WomanShortRaceList';
+import UserRegistionForm from './Components/MyProfile/UserRegistionForm';
+import Location from './Components/Location/Location';
 function App() {
   return (
-    <div className="App">
+    <div className="App min-vh-100 d-flex flex-column justify-content-between mx-auto">
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
@@ -48,6 +50,11 @@ function App() {
         <Route path="/orders" element={
           <RequireAuth>
             <Order></Order>
+          </RequireAuth>
+        }></Route>
+        <Route path="/location" element={
+          <RequireAuth>
+            <Location></Location>
           </RequireAuth>
         }></Route>
         <Route path="/myGame" element={
@@ -76,7 +83,7 @@ function App() {
             </Organize>
           </RequireAuth>
         }></Route>
-        <Route path="/635e936ff84d3ea7d3b0b7a3" element={
+        <Route path="/6367f46fd0a84d769a495c8d" element={
           <RequireAuth>
             <BoyLongRaceList></BoyLongRaceList>
           </RequireAuth>
@@ -121,6 +128,9 @@ function App() {
           </RequireAuth>}></Route>
         <Route path="/myprofile" element={
           <MyProfile></MyProfile>
+        }></Route>
+        <Route path="/userRegistionForm" element={
+          <UserRegistionForm></UserRegistionForm>
         }></Route>
         <Route path='/Boy%20Short%20Race' element={<BoyShortRace></BoyShortRace>}></Route>
         <Route path='/Woman%20Short%20Race' element={<WomanShortRace></WomanShortRace>}></Route>

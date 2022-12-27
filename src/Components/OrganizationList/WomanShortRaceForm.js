@@ -38,11 +38,10 @@ const WomanShortRaceForm = ({ order }) => {
 
     return (
         <form id="myForm" className='mb-8 d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
-            <input className='w-100 mb-2' type="text" name="userName" placeholder='useName'{...register("displayName")} />
-            <input className='mb-2' placeholder='email' name="email" {...register("email", { required: true })} />
-            <input className='mb-2' placeholder='addedItem' value={order?.addedItem} name="addedItem" {...register("addedItem", { required: true })} />
-            <input className='w-100 mb-2' type="double" name="number" placeholder='Time'{...register("Time")} />
-            <input className='w-100 mb-2' type="number" name="number" placeholder='Lab'{...register("LabNumber")} />
+            <input className='w-100 mb-2' type="text" name="userName" value={order?.displayName} placeholder='useName'{...register("displayName")} readOnly/>
+            <input className='mb-2 d-none' placeholder='email' name="email" value={order?.email} {...register("email", { required: true })} readOnly />
+            <input className='mb-2 d-none' placeholder='addedItem' value={order?.addedItem} name="addedItem" {...register("addedItem", { required: true })} readOnly/>
+            <input className='w-100 mb-2'  type="double" name="number" placeholder='Time'{...register("Time")} />
             <input className='submitbt ' type="submit" value="Submit" />
 
         </form>

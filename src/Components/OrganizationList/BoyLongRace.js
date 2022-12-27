@@ -12,11 +12,13 @@ const BoyLongRace = () => {
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
     const navigate = useNavigate();
+    console.log(orders);
     useEffect(() => {
 
         const getOrders = async () => {
             const email = user?.email;
             const url = `http://localhost:5000/boyLongRace?email=${email}`;
+            
             try {
                 const { data } = await axiosPrivate.get(url);
                 setOrders(data);
@@ -35,10 +37,12 @@ const BoyLongRace = () => {
     return (
         <div>
             <h2 className='mb-5'>Boy Long Race Participant: {orders.length}</h2>
+            
+
             <div className='w-75 mx-auto'>
                 {
                     orders.map(order => <div className='row row-cols-3'>
-                        <div> <p> {order.email} : {order.addedItem}</p></div>
+                        <div> <h3> {order.displayName}</h3></div>
                         <div><StopWatch></StopWatch></div>
                         <div><BoyLongRaceForm
                             key={order._id}

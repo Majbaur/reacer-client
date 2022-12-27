@@ -19,7 +19,7 @@ const HillTeackRace = () => {
 
         const getOrders = async () => {
             const email = user?.email;
-            const url = `http://localhost:5000/hillTeackRace?email=${email}`;
+            const url = `http://localhost:5000//hillTeackRace?email=${email}`;
             try {
                 const { data } = await axiosPrivate.get(url);
                 setOrders(data);
@@ -37,11 +37,11 @@ const HillTeackRace = () => {
     }, [user])
     return (
         <div>
-            <h2 className='mb-5'>Hill Teack Race Participant: {orders.length}</h2>
+            <h2 className='mb-5'>Hill Track Race Participant: {orders.length}</h2>
             <div className='w-75 mx-auto'>
                 {
                     orders.map(order => <div className='row row-cols-3'>
-                        <div> <p> {order.email} : {order.addedItem}</p></div>
+                        <div> <h3> {order.displayName}</h3></div>
                         <div><StopWatch></StopWatch></div>
                         <div><HillTracRaceForm
                             key={order._id}

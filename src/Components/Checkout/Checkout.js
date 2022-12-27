@@ -13,15 +13,20 @@ const Checkout = () => {
     const [user] = useAuthState(auth);
 
 
+    console.log(addedItem);
     const handlePlaceOrder = event => {
         event.preventDefault();
         const order = {
+        
+            displayName: event.target.name.value,
             email: user.email,
             addedItem: addedItem.gameName,
             addedItemId: addedItemId,
             address: event.target.address.value,
-            phone: event.target.phone.value
+            phone: event.target.phone.value,
+            eventDetails: event.target.eventDetails.value
         }
+        console.log(order)
         axios.post('http://localhost:5000/order', order)
             .then(response => {
                 const { data } = response;
@@ -34,19 +39,21 @@ const Checkout = () => {
 
     return (
         <div className='w-50 mx-auto'>
-            <h2>Please Order: {addedItem.gameName}</h2>
+            <h2>Please Register: {addedItem.gameName}</h2>
             <form onSubmit={handlePlaceOrder}>
-                <input className='w-100 mb-2' type="text" value={user?.displayName} name="name" placeholder='name' required readOnly disabled />
+                <input className='w-100 mb-2' type="text" name="name" placeholder='name' required />
+              
+                <input className='w-100 mb-2 d-none' type="email" value={user?.email} name="email" placeholder='email' required readOnly disabled />
                 <br />
-                <input className='w-100 mb-2' type="email" value={user?.email} name="email" placeholder='email' required readOnly disabled />
+                <input className='w-100 mb-2' type="text" value={addedItem.gameName} name="addedItem" required readOnly />
                 <br />
-                <input className='w-100 mb-2' type="text" value={addedItem.gameName} name="addedItem" placeholder='addedItem' required readOnly />
+                <input className='w-100 mb-2' type="text" value={addedItem.eventDetails} name="eventDetails" required readOnly />
                 <br />
                 <input className='w-100 mb-2' type="text" name="address" placeholder='address' autoComplete='off' required />
                 <br />
                 <input className='w-100 mb-2' type="text" name="phone" placeholder='phone' required />
                 <br />
-                <input className='btn btn-primary' type="submit" value="Place Order" />
+                <input className='btn btn-primary' type="submit" value="Register" />
             </form>
         </div>
     );

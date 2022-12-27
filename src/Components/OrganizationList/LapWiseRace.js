@@ -37,7 +37,7 @@ const LapWiseRace = () => {
             <div className='w-75 mx-auto'>
                 {
                     orders.map(order => <div className='row row-cols-3'>
-                        <div> <p> {order.email} : {order.addedItem}</p></div>
+                        <div> <p> {order.displayName}</p></div>
                         <div><StopWatch></StopWatch></div>
                         <div><LapWiseRaceForm
                             key={order._id}

@@ -7,13 +7,14 @@ import {getAuth}from 'firebase/auth'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCF8DTOwxQjuiyC267eAgtYi5viXWKhuf8",
-    authDomain: "reacer-50b7b.firebaseapp.com",
-    projectId: "reacer-50b7b",
-    storageBucket: "reacer-50b7b.appspot.com",
-    messagingSenderId: "179240052722",
-    appId: "1:179240052722:web:baa043f3d7cdade2bc6d6b"
-  };
+  apiKey: "AIzaSyCJFWJhwfcEL3rxI7xEeAx61WkgT2dw9Yw",
+  authDomain: "racecontroller-4c100.firebaseapp.com",
+  projectId: "racecontroller-4c100",
+  storageBucket: "racecontroller-4c100.appspot.com",
+  messagingSenderId: "530549561715",
+  appId: "1:530549561715:web:afb81ba4c350677eb54d06"
+};
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

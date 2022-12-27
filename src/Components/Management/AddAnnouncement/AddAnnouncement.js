@@ -43,14 +43,13 @@ const AddAnnouncement = () => {
                     <option>Boy Long Race</option>
                     <option>Woman Long Race</option>
                     <option>Hill Track Race</option>
-                    <option>Lap Wise Race</option>
                 </select>
 
-                <input className='w-100 mb-2' type="photo" name="photo" placeholder='Photo'{...register("photo")} />
+                <input className='w-100 mb-2' type="photo" name="photo" placeholder='Image Address'{...register("photo")} />
                 <input className='w-100 mb-2' type="text" name="location" placeholder='Location'{...register("location")} />
                 <input className='w-100 mb-2' type="date" name="eventDetails" placeholder='Event Details'{...register("eventDetails")} />
                 <textarea className='mb-2' placeholder='Description' {...register("description")} />
-                <input type="submit" value="Submit" />
+                <input className='btn btn-primary' type="submit" value="Submit" />
             </form>
         </div>
     );
